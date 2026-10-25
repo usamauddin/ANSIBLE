@@ -1,0 +1,5 @@
+to test the connection  using vault
+ansible -i inventory.ini aws -m ping --ask-vault-pass
+
+to run playbook using vault
+ansible-playbook -i inventory.ini playbook.yml --ask-vault-pass
