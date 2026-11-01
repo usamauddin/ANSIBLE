@@ -1,0 +1,25 @@
+---
+- name: Install Node.js dependencies
+  apt:
+    name:
+      - curl
+      - build-essential
+    state: present
+    update_cache: yes
+
+- name: Install NVM
+  become_user: ubuntu
+  shell: |
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+  args:
+    creates: /home/ubuntu/.nvm/nvm.sh
+
+- name: Install Node.js using NVM
+  become_user: ubuntu
+  shell: |
+    export NVM_DIR="/home/ubuntu/.nvm"
+    source "$NVM_DIR/nvm.sh"
+    nvm install 24.11.1
+    nvm alias default 24.11.1
+  args:
+    executable: /bin/bash

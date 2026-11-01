@@ -3,3 +3,8 @@ ansible -i inventory.ini aws -m ping --ask-vault-pass
 
 to run playbook using vault
 ansible-playbook -i inventory.ini playbook.yml --ask-vault-pass
+
+to generate role folder structure
+ansible-galaxy role init nginx
+
+ansible ec2 -i inventory.ini -m ping
